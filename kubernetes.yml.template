@@ -20,8 +20,8 @@ spec:
        - name: twitter-feed
          image: ${DOCKER_REGISTRY}/${DOCKER_REPO}:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
       imagePullSecrets:
-       - name: wercker
-         imagePullPolicy: Always
+      - name: wercker
+        imagePullPolicy: Always
         ports:
         - name: twitter-feed
           containerPort: 8080
