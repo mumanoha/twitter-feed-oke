@@ -17,9 +17,11 @@ spec:
         color: green
     spec:
       containers:
-      - name: twitter-feed
-        image: ${DOCKER_REGISTRY}/${DOCKER_REPO}:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
-        imagePullPolicy: Always
+       - name: twitter-feed
+         image: ${DOCKER_REGISTRY}/${DOCKER_REPO}:${WERCKER_GIT_BRANCH}-${WERCKER_GIT_COMMIT}
+      imagePullSecrets:
+       - name: wercker
+         imagePullPolicy: Always
         ports:
         - name: twitter-feed
           containerPort: 8080
@@ -35,8 +37,6 @@ spec:
             - path: "labels"
               fieldRef:
                 fieldPath: metadata.labels
-      imagePullSecrets:
-        - name: wercker
 ---
 apiVersion: v1
 kind: Service
